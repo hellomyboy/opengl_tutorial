@@ -1,14 +1,13 @@
 #include "MainGame.h"
-
-
+#include <iostream>
 
 MainGame::MainGame()
 {
 	_window = nullptr;
 	_width = 800;
 	_height = 400;
+	_gameState = GateState::PLAY;
 }
-
 
 MainGame::~MainGame()
 {
@@ -30,4 +29,30 @@ void MainGame::InitSystem()
 void MainGame::run()
 {
 	InitSystem();
+	gameLoop();
+}
+
+void MainGame::gameLoop()
+{
+	while (_gameState != GateState::EXIT)
+	{
+		processInput();
+	}
+}
+void MainGame::processInput()
+{
+	SDL_Event evnt;
+	while (SDL_PollEvent(&evnt))
+	{
+		switch (evnt.type)
+		{
+		case SDL_QUIT:
+			_gameState = GateState::EXIT;
+			break;
+		case SDL_MOUSEMOTION:
+		std::cout << evnt.motion.x << "," << evnt.motion.y << std::endl;
+			break;
+		}
+	}
+	
 }
