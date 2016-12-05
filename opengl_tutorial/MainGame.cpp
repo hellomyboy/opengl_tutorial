@@ -1,11 +1,22 @@
 #include "MainGame.h"
 #include <iostream>
+#include <string>
+
+void fatalError(std::string errorString)
+{
+	std::cout << errorString << std::endl;
+	std::cout << "enter any key to exit!" << std::endl;
+	int temp;
+	std::cin >> temp;
+	SDL_Quit();
+	exit(1);
+}
 
 MainGame::MainGame()
 {
 	_window = nullptr;
-	_width = 800;
-	_height = 400;
+	_width = 1024;
+	_height = 768;
 	_gameState = GateState::PLAY;
 }
 
@@ -24,6 +35,27 @@ void MainGame::InitSystem()
 		_width, 
 		_height, 
 		SDL_WINDOW_OPENGL);
+
+	if (_window == nullptr)
+	{
+		fatalError("SDL Window could not be created!");
+	}
+
+	SDL_GLContext glContext = SDL_GL_CreateContext(_window);
+	if (glContext == nullptr)
+	{
+		fatalError("SDL Context could not be created!");
+	}
+
+	GLenum error = glewInit();
+	if (error != GLEW_OK)
+	{
+		fatalError("Could not initialize glew");
+	}
+
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
 }
 
 void MainGame::run()
@@ -37,8 +69,10 @@ void MainGame::gameLoop()
 	while (_gameState != GateState::EXIT)
 	{
 		processInput();
+		drawGame();
 	}
 }
+
 void MainGame::processInput()
 {
 	SDL_Event evnt;
@@ -50,9 +84,18 @@ void MainGame::processInput()
 			_gameState = GateState::EXIT;
 			break;
 		case SDL_MOUSEMOTION:
-		std::cout << evnt.motion.x << "," << evnt.motion.y << std::endl;
+			std::cout << evnt.motion.x << "," << evnt.motion.y << std::endl;
 			break;
 		}
 	}
-	
+}
+
+// https://www.youtube.com/watch?v=8t3m2mRH7qs&list=PLSPw4ASQYyymu3PfG9gxywSPghnSMiOAW&index=6
+
+void MainGame::drawGame()
+{
+	glClearDepth(1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	SDL_GL_SwapWindow(_window);
 }

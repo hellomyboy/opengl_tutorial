@@ -15,6 +15,7 @@ public:
 
 	void gameLoop();
 	void processInput();
+	void drawGame();
 
 	void InitSystem();
 	void run();
