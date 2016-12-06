@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL/SDL.h>
 #include <GL/glew.h>
+#include "Sprite.h"
 
 enum class GateState
 {
@@ -25,5 +26,7 @@ private:
 	int _width;
 	int _height;
 	GateState _gameState;
+
+	Sprite _sprite;
 };
 
