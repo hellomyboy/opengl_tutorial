@@ -2,6 +2,7 @@
 #include <SDL/SDL.h>
 #include <GL/glew.h>
 #include "Sprite.h"
+#include "GLSLProgram.h"
 
 enum class GateState
 {
@@ -19,6 +20,7 @@ public:
 	void drawGame();
 
 	void InitSystem();
+	void initShaders();
 	void run();
 
 private:
@@ -28,5 +30,6 @@ private:
 	GateState _gameState;
 
 	Sprite _sprite;
+	GLSLProgram _colorProgram;
 };
 

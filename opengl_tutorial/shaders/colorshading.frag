@@ -2,7 +2,7 @@
 
 out vec3 color;
 
-void main()
+void main() 
 {
-	color = vec3(1.0, 0.0, 0.0);
+	color = vec3(1.0, 0.0, 1.0);
 }

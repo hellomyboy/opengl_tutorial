@@ -33,7 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\colorshading.frag" />
-    <None Include="shaders\colorShading.vert" />
+    <None Include="shaders\colorshading.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8D0C558D-5686-404F-A214-DE6CD82F2067}</ProjectGuid>

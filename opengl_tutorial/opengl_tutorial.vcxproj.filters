@@ -46,10 +46,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\colorShading.vert">
+    <None Include="shaders\colorshading.frag">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="shaders\colorshading.frag">
+    <None Include="shaders\colorshading.vert">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

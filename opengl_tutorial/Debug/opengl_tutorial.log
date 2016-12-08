@@ -1,4 +1,7 @@
-﻿  Sprite.cpp
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+﻿  MainGame.cpp
+  GLSLProgram.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Main.cpp
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.exe
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.pdb (Partial PDB)
