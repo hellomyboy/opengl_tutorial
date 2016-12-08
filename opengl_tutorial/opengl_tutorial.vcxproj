@@ -30,6 +30,7 @@
     <ClInclude Include="GLSLProgram.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\colorshading.frag" />

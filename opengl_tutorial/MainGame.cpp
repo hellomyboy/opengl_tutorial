@@ -59,12 +59,13 @@ void MainGame::initShaders()
 	_colorProgram.compileShaders("shaders/colorshading.vert", "shaders/colorshading.frag");
 	_colorProgram.linkShaders();
 	_colorProgram.addAttribue("vertexPosoiton");
+	_colorProgram.addAttribue("vertexColor");
 }
 
 void MainGame::run()
 {
 	InitSystem();
-	_sprite.init(-1.0f, -1.0f, 1.0f, 1.0f);
+	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
 	gameLoop();
 }
 
@@ -94,7 +95,7 @@ void MainGame::processInput()
 	}
 }
 
-// https://www.youtube.com/watch?v=8t3m2mRH7qs&list=PLSPw4ASQYyymu3PfG9gxywSPghnSMiOAW&index=6
+// https://www.youtube.com/watch?v=gsqrBx8CI0o&index=12&list=PLSPw4ASQYyymu3PfG9gxywSPghnSMiOAW
 
 void MainGame::drawGame()
 {
