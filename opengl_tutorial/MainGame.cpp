@@ -4,6 +4,11 @@
 #include "Sprite.h"
 #include "Error.h"
 
+#include <vector>
+#include "IOManager.h"
+#include "LoadImage.h"
+
+
 
 
 MainGame::MainGame() :
@@ -61,12 +66,16 @@ void MainGame::initShaders()
 	_colorProgram.linkShaders();
 	_colorProgram.addAttribue("vertexPosoiton");
 	_colorProgram.addAttribue("vertexColor");
+	_colorProgram.addAttribue("vertexUV");
 }
 
 void MainGame::run()
 {
 	InitSystem();
 	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
+
+	_playerTexture = ImageLoader::loadPNG("textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
+
 	gameLoop();
 }
 
@@ -75,7 +84,7 @@ void MainGame::gameLoop()
 	while (_gameState != GameState::EXIT)
 	{
 		processInput();
-		_time += 0.001;
+		_time += 0.005;
 		drawGame();
 	}
 }
@@ -97,7 +106,7 @@ void MainGame::processInput()
 	}
 }
 
-// https://www.youtube.com/watch?v=gsqrBx8CI0o&index=12&list=PLSPw4ASQYyymu3PfG9gxywSPghnSMiOAW
+// https://www.youtube.com/watch?v=NlsbnToicLk&index=16&list=PLSPw4ASQYyymu3PfG9gxywSPghnSMiOAW
 
 void MainGame::drawGame()
 {
@@ -108,6 +117,11 @@ void MainGame::drawGame()
 
 	GLuint timeLocation = _colorProgram.getUniformLocation("time");
 	glUniform1f(timeLocation, _time);
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, _playerTexture.id);
+	GLint uvLocation = _colorProgram.getUniformLocation("mySampler");
+	glUniform1i(uvLocation, 0);
 
 	_sprite.draw();
 
