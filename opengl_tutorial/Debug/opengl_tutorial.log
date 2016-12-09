@@ -1,4 +1,4 @@
-﻿  Sprite.cpp
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+﻿  MainGame.cpp
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(78): warning C4305: '+=': truncation from 'double' to 'float'
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.exe
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.pdb (Partial PDB)

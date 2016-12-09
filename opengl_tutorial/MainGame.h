@@ -4,7 +4,7 @@
 #include "Sprite.h"
 #include "GLSLProgram.h"
 
-enum class GateState
+enum class GameState
 {
 	PLAY,
 	EXIT
@@ -27,9 +27,11 @@ private:
 	SDL_Window* _window;
 	int _width;
 	int _height;
-	GateState _gameState;
+	GameState _gameState;
 
 	Sprite _sprite;
 	GLSLProgram _colorProgram;
+
+	float _time;
 };
 

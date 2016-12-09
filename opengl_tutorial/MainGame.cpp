@@ -6,12 +6,13 @@
 
 
 
-MainGame::MainGame()
+MainGame::MainGame() :
+	_window(nullptr),
+	_width(1024),
+	_height(768),
+	_gameState(GameState::PLAY),
+	_time(0.0f)
 {
-	_window = nullptr;
-	_width = 1024;
-	_height = 768;
-	_gameState = GateState::PLAY;
 }
 
 MainGame::~MainGame()
@@ -49,7 +50,7 @@ void MainGame::InitSystem()
 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	initShaders();
 }
@@ -71,9 +72,10 @@ void MainGame::run()
 
 void MainGame::gameLoop()
 {
-	while (_gameState != GateState::EXIT)
+	while (_gameState != GameState::EXIT)
 	{
 		processInput();
+		_time += 0.001;
 		drawGame();
 	}
 }
@@ -86,7 +88,7 @@ void MainGame::processInput()
 		switch (evnt.type)
 		{
 		case SDL_QUIT:
-			_gameState = GateState::EXIT;
+			_gameState = GameState::EXIT;
 			break;
 		case SDL_MOUSEMOTION:
 			std::cout << evnt.motion.x << "," << evnt.motion.y << std::endl;
@@ -103,6 +105,9 @@ void MainGame::drawGame()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	_colorProgram.use();
+
+	GLuint timeLocation = _colorProgram.getUniformLocation("time");
+	glUniform1f(timeLocation, _time);
 
 	_sprite.draw();
 
