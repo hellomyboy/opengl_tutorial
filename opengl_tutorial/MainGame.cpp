@@ -72,9 +72,18 @@ void MainGame::initShaders()
 void MainGame::run()
 {
 	InitSystem();
-	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f);
 
-	_playerTexture = ImageLoader::loadPNG("textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(-1.0f, -1.0f, 1.0f, 1.0f, "textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
+	std::cout << "first sprite" << std::endl;
+
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
+	std::cout << "second sprite" << std::endl;
+
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
+	std::cout << "third sprite" << std::endl;
 
 	gameLoop();
 }
@@ -119,11 +128,14 @@ void MainGame::drawGame()
 	glUniform1f(timeLocation, _time);
 
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, _playerTexture.id);
+	//glBindTexture(GL_TEXTURE_2D, _playerTexture.id);
 	GLint uvLocation = _colorProgram.getUniformLocation("mySampler");
 	glUniform1i(uvLocation, 0);
 
-	_sprite.draw();
+	//_sprite.draw();
+	for (int i = 0; i < _sprites.size(); i++) {
+		_sprites[i]->draw();
+	}
 
 	_colorProgram.unuse();
 

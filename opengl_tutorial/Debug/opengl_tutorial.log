@@ -1,4 +1,7 @@
-﻿  MainGame.cpp
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(87): warning C4305: '+=': truncation from 'double' to 'float'
+﻿  TextureCache.cpp
+  MainGame.cpp
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(96): warning C4305: '+=': truncation from 'double' to 'float'
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(136): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.exe
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.pdb (Partial PDB)

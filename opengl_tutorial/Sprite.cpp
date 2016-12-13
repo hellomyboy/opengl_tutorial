@@ -4,6 +4,8 @@
 #include "Vertex.h"
 //#include <cstddef>
 #include "Error.h"
+#include "LoadImage.h"
+#include <iostream>
 
 Sprite::Sprite()
 {
@@ -14,11 +16,12 @@ Sprite::~Sprite()
 {
 	if (_vboID != 0)
 	{
+		std::cout << "destruct sprite:" << _vboID << std::endl;
 		glDeleteBuffers(1, &_vboID);
 	}
 }
 
-void Sprite::init(float x, float y, float width, float height)
+void Sprite::init(float x, float y, float width, float height, std::string texturePath)
 {
 	_x = x;
 	_y = y;
@@ -62,10 +65,14 @@ void Sprite::init(float x, float y, float width, float height)
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	_texture = ImageLoader::loadPNG(texturePath);
 }
 
 void Sprite::draw()
 {
+	glBindTexture(GL_TEXTURE_2D, _texture.id);
+
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
