@@ -8,15 +8,13 @@
 #include "IOManager.h"
 #include "LoadImage.h"
 
-
-
-
 MainGame::MainGame() :
 	_window(nullptr),
 	_width(1024),
 	_height(768),
 	_gameState(GameState::PLAY),
-	_time(0.0f)
+	_time(0.0f),
+	_maxFPS(60.0)
 {
 }
 
@@ -28,6 +26,8 @@ void MainGame::InitSystem()
 {
 	//initialize SDL
 	SDL_Init(SDL_INIT_EVERYTHING);
+
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	_window = SDL_CreateWindow("opengl tutorial",
 		SDL_WINDOWPOS_CENTERED,
@@ -53,9 +53,12 @@ void MainGame::InitSystem()
 		fatalError("Could not initialize glew");
 	}
 
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	std::printf("*** OpenGL version: %s  ****\n", glGetString(GL_VERSION));
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	//set VSYNC
+	SDL_GL_SetSwapInterval(0);
 
 	initShaders();
 }
@@ -92,9 +95,26 @@ void MainGame::gameLoop()
 {
 	while (_gameState != GameState::EXIT)
 	{
+		float startTicks = SDL_GetTicks();
+
 		processInput();
 		_time += 0.005;
 		drawGame();
+
+		static int frameCounter = 0;
+		frameCounter++;
+		calculateFPS();
+
+		if (frameCounter == 20)
+		{
+			std::cout << "fps:" << _fps << std::endl;
+			frameCounter = 0;
+		}
+
+		float frameTicks = SDL_GetTicks() - startTicks;
+		if (1000 / _maxFPS > frameTicks) {
+			SDL_Delay(1000 / _maxFPS - frameTicks);
+		}
 	}
 }
 
@@ -115,7 +135,7 @@ void MainGame::processInput()
 	}
 }
 
-// https://www.youtube.com/watch?v=NlsbnToicLk&index=16&list=PLSPw4ASQYyymu3PfG9gxywSPghnSMiOAW
+// https://www.youtube.com/watch?v=dNNXeMeF6yk&index=20&list=PLSPw4ASQYyymu3PfG9gxywSPghnSMiOAW
 
 void MainGame::drawGame()
 {
@@ -128,11 +148,9 @@ void MainGame::drawGame()
 	glUniform1f(timeLocation, _time);
 
 	glActiveTexture(GL_TEXTURE0);
-	//glBindTexture(GL_TEXTURE_2D, _playerTexture.id);
 	GLint uvLocation = _colorProgram.getUniformLocation("mySampler");
 	glUniform1i(uvLocation, 0);
 
-	//_sprite.draw();
 	for (int i = 0; i < _sprites.size(); i++) {
 		_sprites[i]->draw();
 	}
@@ -140,4 +158,36 @@ void MainGame::drawGame()
 	_colorProgram.unuse();
 
 	SDL_GL_SwapWindow(_window);
+}
+
+void MainGame::calculateFPS()
+{
+	static const int NUM_FRAME_BUFF = 10;
+	static float frameTime[NUM_FRAME_BUFF];
+	static int buffIndex = 0;
+	static float prevTicks = SDL_GetTicks();
+
+	float currentTicks = SDL_GetTicks();
+	frameTime[buffIndex % NUM_FRAME_BUFF] = currentTicks - prevTicks;
+	prevTicks = currentTicks;
+	buffIndex++;
+
+	int count = 0;
+	if (buffIndex > NUM_FRAME_BUFF) {
+		count = NUM_FRAME_BUFF;
+	} else {
+		count = buffIndex;
+	}
+
+	float frameTimeSum = 0.0;
+	for (int i = 0; i < count; i++) {
+		frameTimeSum += frameTime[i];
+	}
+	float averageTime = frameTimeSum / count;
+
+	if (averageTime > 0) {
+		_fps = 1000.0 / averageTime;	//SDL_GetTicks() return ms
+	} else {
+		_fps = 0;
+	}
 }

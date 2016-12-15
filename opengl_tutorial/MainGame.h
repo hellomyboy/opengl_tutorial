@@ -25,6 +25,8 @@ public:
 	void initShaders();
 	void run();
 
+	void calculateFPS();
+
 private:
 	SDL_Window* _window;
 	int _width;
@@ -36,6 +38,9 @@ private:
 	GLSLProgram _colorProgram;
 
 	//GLTexture _playerTexture;
+
+	float _fps;
+	float _maxFPS;
 
 	float _time;
 };

@@ -1,7 +1,10 @@
-﻿  TextureCache.cpp
-  MainGame.cpp
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(96): warning C4305: '+=': truncation from 'double' to 'float'
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(136): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+﻿  MainGame.cpp
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(98): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(101): warning C4305: '+=': truncation from 'double' to 'float'
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(116): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(156): warning C4018: '<': signed/unsigned mismatch
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(170): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(172): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(191): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.exe
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.pdb (Partial PDB)
