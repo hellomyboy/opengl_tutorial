@@ -1,10 +1,11 @@
 ﻿  MainGame.cpp
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(98): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(101): warning C4305: '+=': truncation from 'double' to 'float'
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(116): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(156): warning C4018: '<': signed/unsigned mismatch
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(170): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(172): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(191): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(66): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(69): warning C4305: '+=': truncation from 'double' to 'float'
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(84): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(122): warning C4018: '<': signed/unsigned mismatch
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(137): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(139): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(158): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.exe
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.pdb (Partial PDB)

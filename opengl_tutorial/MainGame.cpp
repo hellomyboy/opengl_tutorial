@@ -1,15 +1,15 @@
 #include "MainGame.h"
 #include <iostream>
 #include <string>
-#include "Sprite.h"
-#include "Error.h"
+#include <gameEngine\Engine.h>
+#include <gameEngine/Sprite.h>
+#include <gameEngine/Error.h>
 
 #include <vector>
-#include "IOManager.h"
-#include "LoadImage.h"
+#include <gameEngine/IOManager.h>
+#include <gameEngine/LoadImage.h>
 
 MainGame::MainGame() :
-	_window(nullptr),
 	_width(1024),
 	_height(768),
 	_gameState(GameState::PLAY),
@@ -24,41 +24,9 @@ MainGame::~MainGame()
 
 void MainGame::InitSystem()
 {
-	//initialize SDL
-	SDL_Init(SDL_INIT_EVERYTHING);
+	Engine::init();
 
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-	_window = SDL_CreateWindow("opengl tutorial",
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		_width, 
-		_height, 
-		SDL_WINDOW_OPENGL);
-
-	if (_window == nullptr)
-	{
-		fatalError("SDL Window could not be created!");
-	}
-
-	SDL_GLContext glContext = SDL_GL_CreateContext(_window);
-	if (glContext == nullptr)
-	{
-		fatalError("SDL Context could not be created!");
-	}
-
-	GLenum error = glewInit();
-	if (error != GLEW_OK)
-	{
-		fatalError("Could not initialize glew");
-	}
-
-	std::printf("*** OpenGL version: %s  ****\n", glGetString(GL_VERSION));
-
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
-	//set VSYNC
-	SDL_GL_SetSwapInterval(0);
+	_window.create("opengl tutorial", _width, _height, 0);
 
 	initShaders();
 }
@@ -76,15 +44,15 @@ void MainGame::run()
 {
 	InitSystem();
 
-	_sprites.push_back(new Sprite());
+	_sprites.push_back(new Engine::Sprite());
 	_sprites.back()->init(-1.0f, -1.0f, 1.0f, 1.0f, "textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
 	std::cout << "first sprite" << std::endl;
 
-	_sprites.push_back(new Sprite());
+	_sprites.push_back(new Engine::Sprite());
 	_sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
 	std::cout << "second sprite" << std::endl;
 
-	_sprites.push_back(new Sprite());
+	_sprites.push_back(new Engine::Sprite());
 	_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "textures\\jimmyJump_pack\\PNG\\CharacterRight_Standing.png");
 	std::cout << "third sprite" << std::endl;
 
@@ -157,7 +125,8 @@ void MainGame::drawGame()
 
 	_colorProgram.unuse();
 
-	SDL_GL_SwapWindow(_window);
+	//SDL_GL_SwapWindow(_window);
+	_window.swapWindow();
 }
 
 void MainGame::calculateFPS()

@@ -3,15 +3,18 @@
 #include <map>
 #include "GLTexture.h"
 
-class TextureCache
-{
-public:
-	TextureCache();
-	~TextureCache();
+namespace Engine {
 
-	GLTexture getTexture(std::string texturePath);
+	class TextureCache
+	{
+	public:
+		TextureCache();
+		~TextureCache();
 
-private:
-	std::map<std::string, GLTexture> _textureMap;
-};
+		GLTexture getTexture(std::string texturePath);
 
+	private:
+		std::map<std::string, GLTexture> _textureMap;
+	};
+
+}
