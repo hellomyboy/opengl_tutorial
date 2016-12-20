@@ -1,11 +1,13 @@
 ﻿  MainGame.cpp
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(66): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(69): warning C4305: '+=': truncation from 'double' to 'float'
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(84): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(122): warning C4018: '<': signed/unsigned mismatch
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(137): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(139): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
-e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(158): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(68): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(71): warning C4305: '+=': truncation from 'double' to 'float'
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(89): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(97): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(161): warning C4018: '<': signed/unsigned mismatch
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(176): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(178): warning C4244: 'initializing': conversion from 'Uint32' to 'float', possible loss of data
+e:\mygit\opengl_tutorial\opengl_tutorial\maingame.cpp(197): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.exe
   opengl_tutorial.vcxproj -> E:\mygit\opengl_tutorial\Debug\opengl_tutorial.pdb (Partial PDB)

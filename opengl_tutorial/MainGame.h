@@ -7,6 +7,8 @@
 #include <vector>
 #include <gameEngine\Window.h>
 
+#include <gameEngine\Camera2D.h>
+
 enum class GameState
 {
 	PLAY,
@@ -44,5 +46,7 @@ private:
 	float _maxFPS;
 
 	float _time;
+
+	Engine::Camera2D _camera2D;
 };
 
